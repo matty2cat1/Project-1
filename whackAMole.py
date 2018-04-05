@@ -5,15 +5,31 @@
 from ggame import *
 from random import randint
 
-ROWS = 6
-COLS = 6
-CELL_SIZE = 50
-
 #what happens when you click the mouse
-def mouseClick(event): 
-
+#def mouseClick(event): 
+    
 def moveMole():
     data['frames'] = 0 #reset the tp timer
+    holeNum = randint(1,6)
+    if holeNum==1:
+        mole.x = 30
+        mole.y = 50
+    elif holenum==2:
+        mole.x = 200
+        mole.y = 50
+    elif holenum==3:
+        mole.x = 370
+        mole.y = 50
+    elif holenum==4:
+        mole.x = 30
+        mole.y = 200
+    elif holenum==5:
+        mole.x = 200
+        mole.y = 200
+    else:
+        mole.x = 370
+        mole.y = 200
+     
 
 #Updating score
     def updateScore(): 
@@ -22,10 +38,10 @@ def moveMole():
         scoreBox = TextAsset('Score = '+str(data['score']))
 
 
-#Keeps track of how many frames since last teleport, and TPs it after 150 frames
+#Keeps track of how many frames since last teleport, and TPs it after 10 frames
 def step():
     data['frames'] +=1
-    if data['frames']%150 == 0:
+    if data['frames']%10 == 0:
         moveMole()
 
 #Sets up and runs game 
@@ -42,12 +58,18 @@ if __name__ == '__main__':
     
     #graphics for the graphic throne
     moleHill = CircleAsset(70, LineStyle(1,black),black)
-    
+    mole = CircleAsset(70, LineStyle(1,black),brown)
     
     
     Sprite(moleHill, (30,50))
+    Sprite(moleHill, (200,50))
+    Sprite(moleHill, (370,50))
+    Sprite(moleHill, (30,200))
+    Sprite(moleHill, (200,200))
+    Sprite(moleHill, (370,200))
+    Sprite(mole)
 
 #This activates the click part
-    App().listenMouseEvent('click', mouseClick) 
-    App().run()
+    #App().listenMouseEvent('click', mouseClick) 
+    App().run(step)
 
