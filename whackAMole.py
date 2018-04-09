@@ -31,10 +31,11 @@ def moveMole():
         mole.y = 200
 
 #what happens when you click the mouse
-"""
+
 def mouseClick(event):
-    if **Mouse location 
-"""
+    print ("YES!!!!!!!!!!!!!!!!!!!!!!!!")
+    
+
 
 
 #Updating score
@@ -70,7 +71,7 @@ if __name__ == '__main__':
     #graphics for the graphic throne
     moleHill = CircleAsset(70, LineStyle(1,black),black)
     moleAsset = CircleAsset(70, LineStyle(1,black),brown)
-    gague = LineAsset(50,160,blackOutline)
+    #gague = LineAsset(50,160,blackOutline)
     
     
     Sprite(moleHill, (30,50))
@@ -79,10 +80,9 @@ if __name__ == '__main__':
     Sprite(moleHill, (30,200))
     Sprite(moleHill, (200,200))
     Sprite(moleHill, (370,200))
-    Sprite(gague(0,0))
+    #Sprite(gague(0,0))
     mole = Sprite(moleAsset, (30,50))
 
 #This activates the click part
     App().listenMouseEvent('click', mouseClick) 
     App().run(step)
-
