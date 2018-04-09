@@ -8,9 +8,8 @@ from random import randint
     
 def moveMole():
     print("hello")
-    #data['frames'] = 0 #reset the tp timer
+    data['frames'] = 0 #reset the tp timer
     holeNum = randint(1,6)
-    return(holeNum)
     if holeNum==1:
         mole.x = 30
         mole.y = 50
@@ -29,12 +28,23 @@ def moveMole():
     else:
         mole.x = 370
         mole.y = 200
+    return(holeNum)
 
 #what happens when you click the mouse
 
 def mouseClick(event):
-    print ("YES!!!!!!!!!!!!!!!!!!!!!!!!")
-    
+    if event.x<=181 and event.y<=191: #and holeNum==1:
+        print("Yeet")
+    elif event.x>=181 and event.x<=355 and event.y<=191: 
+        print("Yo")
+    elif event.x>=356 and event.y<=191: 
+        print("bro")
+    elif event.x<=181 and event.y>=192:
+        print("What?")
+    elif event.x>=181 and event.x<=355 and event.y>=192:
+        print("Hooya!")
+    else:
+        print("Hoorah!")
 
 
 
@@ -53,8 +63,8 @@ def updateScore():
 #Keeps track of how many frames since last teleport, and TPs it after 10 frames
 def step():
     data['frames'] +=1
-    print("test")
-    moveMole() 
+    if data['frames']%150 == 0:
+        moveMole() 
 
 #Sets up and runs game 
 if __name__ == '__main__':
@@ -80,7 +90,6 @@ if __name__ == '__main__':
     Sprite(moleHill, (30,200))
     Sprite(moleHill, (200,200))
     Sprite(moleHill, (370,200))
-    #Sprite(gague(0,0))
     mole = Sprite(moleAsset, (30,50))
 
 #This activates the click part
