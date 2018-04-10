@@ -7,7 +7,6 @@ from random import randint
 
     
 def moveMole():
-    print("hello")
     data['frames'] = 0 #reset the tp timer
     holeNum = randint(1,6)
     if holeNum==1:
@@ -34,37 +33,31 @@ def moveMole():
 
 def mouseClick(event):
     if event.x<=181 and event.y<=191: 
-        print("Yeet")
         if data['holeNum']==1:
             updateScore()
         else:
             missScore()
     elif event.x>=181 and event.x<=355 and event.y<=191: 
-        print("Yo")
         if data['holeNum']==2:
             updateScore()
         else:
             missScore()
     elif event.x>=356 and event.y<=191: 
-        print("bro")
         if data['holeNum']==3:
             updateScore()
         else:
             missScore()
     elif event.x<=181 and event.y>=192:
-        print("What?")
         if data['holeNum']==4:
             updateScore()
         else:
             missScore()
     elif event.x>=181 and event.x<=355 and event.y>=192:
-        print("Hooya!")
         if data['holeNum']==5:
             updateScore()
         else:
             missScore()
     else:
-        print("Hoorah!")
         if data['holeNum']==6:
             updateScore()
         else:
@@ -73,18 +66,35 @@ def mouseClick(event):
 
 
 #Updating score
-def updateScore(): 
+def updateScore():
+    moveMole()
     data['score'] += 10
     data['scoreText'].destroy() #remove old writing
     scoreBox = TextAsset('Score = '+str(data['score']))
     data['scoreText'] = Sprite(scoreBox,(550,50))
-    
+    response= randint(1,3)
+    if response == 1:
+        print("WHY WOULD YOU DO THAT!?")
+    elif response ==2:
+        print("OUCH! THAT REALLY HURT!")
+    else:
+        print("Take your anger out on something else!")
 
-def missScore(): 
+    
+#If you miss a mole
+def missScore():
+    moveMole()
     data['score'] -= 5
     data['scoreText'].destroy() #remove old writing
     scoreBox = TextAsset('Score = '+str(data['score']))
     data['scoreText'] = Sprite(scoreBox,(550,50))
+    response= randint(1,3)
+    if response == 1:
+        print("HAH! MISSED ME")
+    elif response ==2:
+        print("Lol, see ya scrub")
+    else:
+        print("Jeez, you are awful at this")
 
 
 #Keeps track of how many frames since last teleport, and TPs it after 10 frames
