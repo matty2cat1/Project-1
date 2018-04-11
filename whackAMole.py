@@ -121,7 +121,7 @@ if __name__ == '__main__':
     moleAsset = CircleAsset(70, LineStyle(1,black),brown)
     scoreBox = TextAsset('Score = 0')
     
-    
+    #Spriting graphics
     Sprite(moleHill, (30,50))
     Sprite(moleHill, (200,50))
     Sprite(moleHill, (370,50))
