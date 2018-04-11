@@ -6,7 +6,7 @@ from ggame import *
 from random import randint
 
     
-def moveMole():
+def moveMole(): #Teleports the mole
     data['frames'] = 0 #reset the tp timer
     holeNum = randint(1,6)
     if holeNum==1:
@@ -29,36 +29,36 @@ def moveMole():
         mole.y = 200
     data['holeNum']=holeNum
 
-#what happens when you click the mouse
 
-def mouseClick(event):
-    if event.x<=181 and event.y<=191: 
+
+def mouseClick(event): #what happens when you click the mouse
+    if event.x<=181 and event.y<=191: #Clicks hole 1
         if data['holeNum']==1:
-            updateScore()
+            updateScore() #adds 10 points on hit
         else:
-            missScore()
-    elif event.x>=181 and event.x<=355 and event.y<=191: 
+            missScore() #subtracts 5 on miss
+    elif event.x>=181 and event.x<=355 and event.y<=191: #Clicks hole 2
         if data['holeNum']==2:
             updateScore()
         else:
             missScore()
-    elif event.x>=356 and event.y<=191: 
+    elif event.x>=356 and event.y<=191: #Clicks hole 3
         if data['holeNum']==3:
             updateScore()
         else:
             missScore()
-    elif event.x<=181 and event.y>=192:
+    elif event.x<=181 and event.y>=192: #Clicks hole 4
         if data['holeNum']==4:
             updateScore()
         else:
             missScore()
-    elif event.x>=181 and event.x<=355 and event.y>=192:
+    elif event.x>=181 and event.x<=355 and event.y>=192: #Clicks hole 5
         if data['holeNum']==5:
             updateScore()
         else:
             missScore()
     else:
-        if data['holeNum']==6:
+        if data['holeNum']==6: #Clicks hole 6
             updateScore()
         else:
             missScore()
@@ -66,13 +66,13 @@ def mouseClick(event):
 
 
 #Updating score
-def updateScore():
+def updateScore(): #add 10 points
     moveMole()
     data['score'] += 10
     data['scoreText'].destroy() #remove old writing
     scoreBox = TextAsset('Score = '+str(data['score']))
     data['scoreText'] = Sprite(scoreBox,(550,50))
-    response= randint(1,3)
+    response= randint(1,3) #Getting hit response
     if response == 1:
         print("WHY WOULD YOU DO THAT!?")
     elif response ==2:
@@ -81,14 +81,14 @@ def updateScore():
         print("Take your anger out on something else!")
 
     
-#If you miss a mole
-def missScore():
+
+def missScore(): #If you miss a mole this will subtract 5 points
     moveMole()
     data['score'] -= 5
     data['scoreText'].destroy() #remove old writing
     scoreBox = TextAsset('Score = '+str(data['score']))
     data['scoreText'] = Sprite(scoreBox,(550,50))
-    response= randint(1,3)
+    response= randint(1,3) #insulter.py
     if response == 1:
         print("HAH! MISSED ME")
     elif response ==2:
@@ -97,7 +97,7 @@ def missScore():
         print("Jeez, you are awful at this")
 
 
-#Keeps track of how many frames since last teleport, and TPs it after 10 frames
+#Keeps track of how many frames since last teleport, and TPs it after 50 frames
 def step():
     data['frames'] +=1
     if data['frames']%50 == 0:
